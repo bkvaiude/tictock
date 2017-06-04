@@ -5,8 +5,11 @@
 - Attendace Check-in Form
 - Admin Panel
 - Listing by department or username
+- Filters on listing
 - AVG time by user
 - AVG time for department's users
+- config.json
+- ip based validation has done for check-in using http://ipinfo.io/10.93.229.188/json
 
 ## Site
 https://tictock.herokuapp.com/
