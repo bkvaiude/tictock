@@ -53,7 +53,7 @@ Class PageService extends BaseService
 		if($_POST['username'])
 		{
 			//check for the location and validate it with database stored locations
-			$ip = $_SERVER['REMOTE_ADDR'];
+			$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
 			$details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
 			$attendanceConfig = file_get_contents("attendance-config.json");
 			$attendanceConfig = json_decode($attendanceConfig,true);
