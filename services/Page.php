@@ -5,7 +5,7 @@ Class PageService extends BaseService
 	public $layout;
 	public $mysqli;
 
-	function __construct($layout)
+	function __construct($layout=null)
 	{
 		$this->layout = $layout;
 		parent::__construct();
@@ -44,17 +44,16 @@ Class PageService extends BaseService
 		echo $this->layout;
 	}
 
-	public function get_attendance_page()
+	public function get_attendance_page($isTesting=null)
 	{
 		if($_POST['username'])
 		{
 			//check for the location and validate it with database stored locations
 			$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
 			$details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
-			$attendanceConfig = file_get_contents("attendance-config.json");
+			$attendanceConfig = file_get_contents(PROJECT_ROOT."attendance-config.json");
 			$attendanceConfig = json_decode($attendanceConfig,true);
 			$locations = $attendanceConfig['locations'];
-			$result = $this->mysqli->query($sqlQuery);
 			if($_REQUEST['its_me']=="Bhushan")
 			{
 				var_dump($details);
@@ -76,6 +75,10 @@ Class PageService extends BaseService
 					$userInTimeInSeconds = strtotime("1970-01-01 $userInTime UTC");
 
 					$attendanceStatus = ($configInTimeInSeconds > $userInTimeInSeconds) ? PRESENT : LATE;
+					if($isTesting['type'] == "late-checkin")
+					{
+						return $attendanceStatus;
+					}
 
 					$data = array('welcome' => "", "latecomer"=>"");
 					$sqlQuery = "INSERT INTO attendances (username, logging_date, type, time_info, status) VALUES ('".$_POST['username']."','".date("Y-m-d")."','".$_POST['type']."','".$userInTime."', '".$attendanceStatus."');";
@@ -85,6 +88,10 @@ Class PageService extends BaseService
 
 					if($errors)
 					{
+						if($isTesting['type'] == "double-checkin")
+						{
+							return $errors;
+						}
 						$partialView = $this->requireToVar("services/site/attendance.php", array('errors'=>$errors));
 					}
 					else
@@ -109,6 +116,11 @@ Class PageService extends BaseService
 			else
 			{
 				$errors = "Dear! Please do check-in from the office!";
+				if($isTesting['type'] == "outside-checkin")
+				{
+					return $errors;
+				}
+
 				$partialView = $this->requireToVar("services/site/attendance.php", array('errors'=>$errors));
 			}
 		}

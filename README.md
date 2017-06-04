@@ -34,3 +34,16 @@ https://tictock.herokuapp.com/admin.php
 
 # Database
 sampleData.sql
+
+# PHPUnit 4.8.0
+```
+Bhushans-MacBook-Pro-2:Downloads bhushanvaiude$ phpunit /Users/bhushanvaiude/Documents/MAMP/tictock/tests/PageTest.php
+PHPUnit 4.8.0 by Sebastian Bergmann and contributors.
+
+..
+
+Time: 3.09 seconds, Memory: 11.75Mb
+
+OK (2 tests, 2 assertions)
+Bhushans-MacBook-Pro-2:Downloads bhushanvaiude$ git status
+```
