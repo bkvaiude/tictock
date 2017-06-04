@@ -1,0 +1,94 @@
+{
+	"location" : ["Turambhe","Mumbai"],
+	"shifts" : { "morning": {"in_time":"10:00:00","out_time":"19:00:00"}},
+	"messages" : 
+	{
+		"welcome":[ 
+
+			"People often say that motivation doesn't last. Well, neither does bathing -- that's why we recommend it daily. -- Zig Ziglar",
+
+			"Sales are contingent upon the attitude of the salesman -- not the attitude of the prospect. -- W. Clement Stone",
+
+			"Being good in business is the most fascinating kind of art. Making money is art and working is art and good business is the best art. -- Andy Warhol",
+
+			"Always do your best. What you plant now, you will harvest later. -- Og Mandino",
+
+			"Everyone lives by selling something. -- Robert Louis Stevenson",
+
+			"Develop success from failures. Discouragement and failure are two of the surest stepping stones to success. -- Dale Carnegie",
+
+			"Challenges are what make life interesting and overcoming them is what makes life meaningful. -- Joshua J. Marine",
+
+			"Action is the foundational key to all success. -- Pablo Picasso",
+
+			"If you are not taking care of your customer, your competitor will. -- Bob Hooey",
+
+			"The golden rule for every businessman is this: Put yourself in your customer's place. -- Orison Swett Marden",
+
+			"Hire character. Train skill. -- Peter Schutz",
+
+			"The best leaders are those most interested in surrounding themselves with assistants and associates smarter than they are. They are frank in admitting this and are willing to pay for such talents. -- Antos Parrish",
+
+			"Be patient with yourself. Self-growth is tender; it’s holy ground. There’s no greater investment. -- Stephen Covey",
+
+			"The secret of joy in work is contained in one word -- excellence. To know how to do something well is to enjoy it. -- Pearl Buck",
+
+			"Nothing is really work unless you would rather be doing something else. -- J.M. Barrie",
+
+			"Without a customer, you don’t have a business -- all you have is a hobby. -- Don Peppers",
+
+			"To be most effective in sales today, it's imperative to drop your 'sales' mentality and start working with your prospects as if they've already hired you. -- Jill Konrath",
+
+			"Formula for success: rise early, work hard, strike oil. -- J. Paul Getty"
+		],
+
+		"latecomer" : [ "Until you value yourself, you won’t value your time. Until you value your time, you will not do anything with it. ~ M. Scott Peck",
+
+			"The key is in not spending time, but in investing it. ~ Stephen R. Covey",
+
+			"My favorite things in life don’t cost any money. It’s really clear that the most precious resource we all have is time. ~ Steve Jobs",
+
+			"Know the true value of time; snatch, seize, and enjoy every moment of it. ~ Lord Chesterfield",
+
+			"I recommend you take care of the minutes and the hours will take care of themselves. ~ Earl of Chesterfield",
+
+			"Realize that now, in this moment of time, you are creating. You are creating your next moment. That is what’s real. ~ Sara Paddison",
+
+			"If you spend too much time thinking about a thing, you’ll never get it done. ~ Bruce Lee",
+
+			"Most people spend more time and energy going around problems than in trying to solve them. ~ Henry Ford",
+
+			"Don’t spend time beating on a wall, hoping to transform it into a door. ~ Coco Chanel",
+
+			"Ordinary people think merely of spending time. Great people think of using it. ~ Author Unknown",
+
+			"Time is what we want most, but what we use worst. ~ William Penn",
+
+			"Men talk of killing time, while time quietly kills them. ~ Dion Boucicault",
+
+			"Dost thou love life? Then do not squander time, for that is the stuff life is made of. ~ Benjamin Franklin",
+
+			"Time = Life, Therefore, waste your time and waste of your life, or master your time and master your life. ~ Alan Lakein",
+
+			"Lost time is never found again. ~ Benjamin Franklin",
+
+			"You can’t make up for lost time. You can only do better in the future. ~ Ashley Ormon",
+
+			"Lack of direction, not lack of time, is the problem. We all have twenty-four hour days. ~ Zig Ziglar",
+
+			"You will never find time for anything. If you want time you must make it. ~ Charles Buxton",
+
+			"The essence of self-discipline is to do the important thing rather than the urgent thing. ~ Barry Werner",
+
+			"Don’t wait. The time will never be just right. ~ Napoleon Hill",
+
+			"Better three hours too soon than a minute too late. ~ William Shakespeare",
+
+			"Determine never to be idle. No person will have occasion to complain of the want of time who never loses any. It is wonderful how much can be done if we are always doing. ~ Thomas Jefferson",
+
+			"The best time to plant a tree is twenty years ago. The second best time is now. ~ Proverb",
+
+			"One day at a time–this is enough. Do not look back and grieve over the past for it is gone; and do not be troubled about the future, for it has not yet come. Live in the present, and make it so beautiful it will be worth remembering. ~ Unknown" 
+		]
+	}
+}

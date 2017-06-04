@@ -1,6 +1,6 @@
 <?php
 
-Class PageService
+Class PageService extends BaseService
 {
 	public $layout;
 	public $mysqli;
@@ -8,9 +8,7 @@ Class PageService
 	function __construct($layout)
 	{
 		$this->layout = $layout;
-		$db = Database::getInstance();
-		$this->mysqli = $db->getConnection(); 
-
+		parent::__construct();
 	}
 
 	public function get_signup_page()
@@ -51,7 +49,65 @@ Class PageService
 		if($_POST['username'])
 		{
 			//check for the location and validate it with database stored locations
-			//check for the database duplicate entry
+			$ip = $_SERVER['REMOTE_ADDR'];
+			$details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
+			$attendanceConfig = file_get_contents("attendance-config.json");
+			$attendanceConfig = json_decode($attendanceConfig,true);
+			$locations = $attendanceConfig['locations'];
+			$result = $this->mysqli->query($sqlQuery);
+
+			if(in_array($details->city, $locations) || true)
+			{
+				//check for the database duplicate entry
+				try
+				{
+					// if ($hrs >  6) $msg = "morning";      // After 6am
+					// if ($hrs > 12) $msg = "afternoon";    // After 12pm
+					// if ($hrs > 17) $msg = "evening";      // After 5pm
+					// if ($hrs > 22) $msg = "night";        // After 10pm
+					$msg =  "morning";
+					$configInTime = $attendanceConfig['shifts'][$msg]['in_time'];
+					$configInTimeInSeconds = strtotime("1970-01-01 $configInTime UTC");
+
+					$userInTime = date("H:i:s");
+					$userInTimeInSeconds = strtotime("1970-01-01 $userInTime UTC");
+
+					$attendanceStatus = ($configInTimeInSeconds > $userInTimeInSeconds) ? PRESENT : LATE;
+
+					$data = array('welcome' => "", "latecomer"=>"");
+					$sqlQuery = "INSERT INTO attendances (username, logging_date, type, time_info, status) VALUES ('".$_POST['username']."','".date("Y-m-d")."','".$_POST['type']."','".$userInTime."', '".$attendanceStatus."');";
+					// echo $sqlQuery;
+					$result = $this->mysqli->query($sqlQuery);
+					$errors = $this->mysqli->error;
+
+					if($errors)
+					{
+						$partialView = $this->requireToVar("services/site/attendance.php", array('errors'=>$errors));
+					}
+					else
+					{
+						
+
+						$quotes = $attendanceConfig['messages'];
+						$data['welcome'] = $quotes["welcome"][array_rand($quotes["welcome"])];
+						if($attendanceStatus == LATE)
+						{
+							$data['latecomer'] = "Ohh dear!! Not again. ".$quotes["latecomer"][array_rand($quotes["latecomer"])];
+						}
+						$partialView = $this->requireToVar("services/site/attendance-thankyou.php",$data);
+					}
+				}
+				catch(Exception $e)
+				{
+					$errors = $e->getMessage();
+					$partialView = $this->requireToVar("services/site/attendance.php",array('errors'=>$errors));
+				}
+			}
+			else
+			{
+				$errors = "Dear! Please do check-in from the office!";
+				$partialView = $this->requireToVar("services/site/attendance.php", array('errors'=>$errors));
+			}
 		}
 		else
 		{
@@ -61,21 +117,5 @@ Class PageService
 		$this->layout = str_replace("{{content}}", $partialView, $this->layout);
 		echo $this->layout;		
 	}
-
-	private function requireToVar($file, $viewdata){
-	    ob_start();
-	    extract($viewdata);
-	    require($file);
-	    return ob_get_clean();
-	}
-
 }
-
-// $ip = $_SERVER['REMOTE_ADDR'];
-// $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
-// echo $details->city; // -> "Mountain View"
-
-
-
-
 ?>

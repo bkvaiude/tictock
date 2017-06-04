@@ -1,0 +1,5 @@
+{
+    "require": {
+        "ashleydawson/simple-pagination": "^1.0"
+    }
+}
