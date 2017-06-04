@@ -10,6 +10,7 @@
 
     <!-- Le styles -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="select2/css/select2.min.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 40px;
@@ -66,6 +67,36 @@
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
+  
+    <script src="select2/js/select2.min.js"></script>
+        <script type="text/javascript">
+$(".js-data-example-ajax").select2({
+  ajax: {
+    url: "/?page=usernames",
+    dataType: 'json',
+    // delay: 250,
+    data: function (params) {
+      return {
+        q: params.term, // search term
+        page: params.page
+      };
+    },
+    processResults: function (data, params) {
+      params.page = params.page || 1;
 
+      return {
+        results: data,
+        pagination: {
+          more: (params.page * 30) < data.total_count
+        }
+      };
+    },
+    cache: true
+  },
+  // escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+  minimumInputLength: 1
+});       
+
+      </script>
   </body>
 </html>

