@@ -22,7 +22,7 @@
 ?>
       <tr class="<?php echo $warningClass; ?>">
         <td><a href="admin.php?landing_page=profile&username=<?php echo $item['username']; ?>"><?php echo $item['fullname']; ?></a></td>
-        <td><?php echo $item['department']; ?></td>
+        <td><a href="admin.php?landing_page=department&department=<?php echo $item['department']; ?>"><?php echo $item['department']; ?></a></td>
         <td><?php echo $item['logging_date']; ?></td>
         <td><?php echo $item['time_info']; ?></td>
       </tr>

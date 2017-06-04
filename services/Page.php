@@ -55,7 +55,10 @@ Class PageService extends BaseService
 			$attendanceConfig = json_decode($attendanceConfig,true);
 			$locations = $attendanceConfig['locations'];
 			$result = $this->mysqli->query($sqlQuery);
-
+			if($_REQUEST['its_me']=="Bhushan")
+			{
+				var_dump($details);
+			}
 			if(in_array($details->city, $locations) || $_REQUEST['its_me']=="Bhushan")
 			{
 				//check for the database duplicate entry
