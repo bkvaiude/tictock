@@ -1,5 +1,5 @@
 {
-	"location" : ["Turambhe","Mumbai"],
+	"locations" : ["Turambhe","Mumbai"],
 	"shifts" : { "morning": {"in_time":"10:00:00","out_time":"19:00:00"}},
 	"messages" : 
 	{

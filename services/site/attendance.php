@@ -6,7 +6,8 @@
 	      <option value="0" selected="selected">Username</option>
 	    </select>
 	    <hr/>
-        <input type="hidden" class="input-block-level" value="IN" required>
+        <input type="hidden" name="type" class="input-block-level" value="IN" required>
+        <input type="hidden" name="its_me" class="input-block-level" value="<?php echo $_REQUEST['its_me']; ?>" required>
         <button class="btn btn-large btn-primary" type="submit">Check-in</button>
         <button class="btn btn-large btn-primary" type="submit" onclick="alert('Feature is coming soon!'); return false;">Check-out</button>
       </form>
