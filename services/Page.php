@@ -46,10 +46,6 @@ Class PageService extends BaseService
 
 	public function get_attendance_page()
 	{
-		if($_REQUEST['its_me']=="Bhushan")
-		{
-			var_dump($_SERVER);
-		}		
 		if($_POST['username'])
 		{
 			//check for the location and validate it with database stored locations
